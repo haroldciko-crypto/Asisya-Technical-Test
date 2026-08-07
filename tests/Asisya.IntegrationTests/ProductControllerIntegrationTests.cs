@@ -1,6 +1,6 @@
 using System.Net;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 
 namespace Asisya.IntegrationTests;
 
@@ -12,7 +12,12 @@ public class ProductControllerIntegrationTests :
     public ProductControllerIntegrationTests(
         WebApplicationFactory<Program> factory)
     {
-        _client = factory.CreateClient();
+        _client = factory
+            .WithWebHostBuilder(builder =>
+            {
+                builder.UseEnvironment("Testing");
+            })
+            .CreateClient();
     }
 
     [Fact]
