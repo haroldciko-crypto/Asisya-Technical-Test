@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Asisya.Api/Asisya.Api.csproj" />
+    <Project Path="src/Asisya.Application/Asisya.Application.csproj" />
+    <Project Path="src/Asisya.Domain/Asisya.Domain.csproj" />
+    <Project Path="src/Asisya.Infrastructure/Asisya.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Asisya.IntegrationTests/Asisya.IntegrationTests.csproj" />
+    <Project Path="tests/Asisya.UnitTests/Asisya.UnitTests.csproj" />
+  </Folder>
+</Solution>
