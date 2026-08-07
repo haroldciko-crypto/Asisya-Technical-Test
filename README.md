@@ -101,6 +101,26 @@ También podría incorporarse Redis para cachear consultas frecuentes de product
 
 ---
 
+## Ejecutar con Docker
+
+Requisitos:
+- Docker Desktop instalado
+
+Ejecutar:
+
+docker compose up --build
+
+Frontend:
+http://localhost:5173
+
+Backend Swagger:
+http://localhost:8080/swagger
+
+PostgreSQL:
+localhost:5432
+
+---
+
 # Ejecución del Backend
 
 ```bash

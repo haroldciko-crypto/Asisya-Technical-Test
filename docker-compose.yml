@@ -1,29 +1,41 @@
 services:
-
   postgres:
-
     image: postgres:16
-
     container_name: asisya-postgres
-
     restart: always
-
     environment:
-
       POSTGRES_USER: postgres
-
       POSTGRES_PASSWORD: postgres
-
       POSTGRES_DB: AsisyaDb
-
     ports:
-
       - "5432:5432"
-
     volumes:
-
       - postgres_data:/var/lib/postgresql/data
 
-volumes:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: asisya-api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Docker
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=AsisyaDb;Username=postgres;Password=postgres
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:8080/api
+    container_name: asisya-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+
+volumes:
   postgres_data:
